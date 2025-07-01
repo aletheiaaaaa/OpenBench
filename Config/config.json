@@ -24,31 +24,6 @@
     ],
 
     "engines": [
-        "4ku",
-        "BlackMarlin",
-        "BoyChesser",
-        "ByteKnight",
-        "Caps",
-        "Chessatron",
-        "Dog",
         "Episteme",
-        "Ethereal",
-        "FabChess",
-        "GrandChess",
-        "Igel",
-        "Obsidian",
-        "Pawnocchio",
-        "Perseus",
-        "Polaris",
-        "Rose",
-        "Stash",
-        "Stockfish",
-        "Stormphrax",
-        "Tantabus",
-        "Toad",
-        "Viridithas",
-        "Yukari",
-        "bannou",
-        "ice4"
     ]
 }
