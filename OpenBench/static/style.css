@@ -1,7 +1,6 @@
-
 a:link, a:visited, a:hover, a:active {
     text-decoration: none;
-    color: #D4A5E6; 
+    color: #E599D0;
 }
 
 body {
@@ -11,7 +10,7 @@ body {
 
     --color-font1: #DBDEE1;
     --color-font2: #949BA4;
-    --color-font3: #E599D0; 
+    --color-font3: #D4A5E6;
 
     background-color: var(--color1);
 
@@ -208,24 +207,24 @@ body, html, main{
 }
 
 #content .btn-blue {
-    background-color: #1C2D40;
+    background-color: #3D2D5A; /* Purple-violet instead of blue */
 }
 
 #content .btn-start {
-    background-color: #384A5F;
+    background-color: #5A3F7E; /* Brighter purple-violet */
     width: 100%;
 }
 
 #content .btn-preset {
-    background-color: #046c52;
+    background-color: #6B4C8A; /* Purple instead of green */
 }
 
 #content .btn-yellow {
-    background-color: #7A4E09;
+    background-color: #8B6F47; /* Keeping warm tone but with purple undertone */
 }
 
 #content .btn-red {
-    background-color: #74261E;
+    background-color: #8B4A6C; /* Purple-pink instead of pure red */
 }
 
 #content .btn-disabled {
@@ -233,23 +232,23 @@ body, html, main{
 }
 
 #content .btn-blue:hover {
-    background-color: #2E3F57;
+    background-color: #4F3D72; /* Lighter purple on hover */
 }
 
 #content .btn-start:hover {
-    background-color: #2E3F57;
+    background-color: #6B4F96; /* Lighter purple on hover */
 }
 
 #content .btn-preset:hover {
-    background-color: #11a983;
+    background-color: #7D5C9E; /* Lighter purple on hover */
 }
 
 #content .btn-yellow:hover {
-    background-color: #9B6B0F;
+    background-color: #9D8159; /* Lighter warm purple on hover */
 }
 
 #content .btn-red:hover {
-    background-color: #8E3D28;
+    background-color: #9D5C7E; /* Lighter purple-pink on hover */
 }
 
 #content .btn-disabled:hover {
