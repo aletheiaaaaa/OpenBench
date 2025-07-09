@@ -1,7 +1,7 @@
 
 a:link, a:visited, a:hover, a:active {
     text-decoration: none;
-    color: #8BBAD6;
+    color: #D4A5E6; 
 }
 
 body {
@@ -11,7 +11,7 @@ body {
 
     --color-font1: #DBDEE1;
     --color-font2: #949BA4;
-    --color-font3: #DAA520;
+    --color-font3: #E599D0; 
 
     background-color: var(--color1);
 
