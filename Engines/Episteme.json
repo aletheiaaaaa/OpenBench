@@ -1,6 +1,6 @@
 {
     "private" : false,
-    "nps"     : 2100000,
+    "nps"     : 1500000,
     "source"  : "https://github.com/aletheiaaaaa/episteme",
 
     "build" : {
