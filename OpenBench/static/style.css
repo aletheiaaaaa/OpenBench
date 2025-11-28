@@ -12,9 +12,9 @@ a:hover {
 
 body {
 
-    --color1: #0F0D1F;
-    --color2: #1A1530;
-    --color3: #2A2142;
+    --color1: #060308;
+    --color2: #0D0A12;
+    --color3: #15111D;
     --color-accent: #9B86D3;
     --color-accent-2: #C8B7E8;
     --color-accent-3: #7B5FB8;
@@ -45,7 +45,7 @@ body, html, main {
 #sidebar {
     padding: 60px 20px 20px 20px;
     flex-basis: calc(min(320px, max(220px, 12%)));
-    background: linear-gradient(180deg, #0F0D1F 0%, #1A1530 100%);
+    background: linear-gradient(180deg, #060308 0%, #0D0A12 100%);
     border-right: 1px solid rgba(184, 164, 232, 0.12);
 }
 
@@ -120,7 +120,7 @@ body, html, main {
 }
 
 #content .stripes th {
-    background-color: #0B0918;
+    background-color: #020103;
 }
 
 #content .hoverable tr:nth-child(odd):hover:not(.table-header),
@@ -157,14 +157,14 @@ body, html, main {
     font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 1.2px;
-    background: linear-gradient(135deg, #0B0918 0%, #1A1530 100%);
+    background: linear-gradient(135deg, #020103 0%, #0D0A12 100%);
     border-bottom: 2px solid var(--color-accent);
 }
 
 #content .table-small-header th {
     color: var(--color-font3);
     font-size: 0.75rem;
-    background-color: #0B0918;
+    background-color: #020103;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
@@ -175,7 +175,7 @@ body, html, main {
 }
 
 #content .table-spacer-small th, #content .table-spacer-small tr {
-    background-color: #0B0918;
+    background-color: #020103;
     height: 0.4rem;
     padding: 0px;
 }
@@ -248,7 +248,7 @@ body, html, main {
 
 #content .btn-start {
     background: linear-gradient(135deg, #8B73C7 0%, #B8A4E8 100%);
-    color: #0F0D1F;
+    color: #060308;
     border-color: rgba(139, 115, 199, 0.4);
     box-shadow: 0 4px 20px rgba(139, 115, 199, 0.35);
     width: 100%;
@@ -257,14 +257,14 @@ body, html, main {
 
 #content .btn-preset {
     background: linear-gradient(135deg, #9B86D3 0%, #C8B7E8 100%);
-    color: #0F0D1F;
+    color: #060308;
     border-color: rgba(155, 134, 211, 0.3);
     box-shadow: 0 4px 15px rgba(155, 134, 211, 0.25);
 }
 
 #content .btn-yellow {
     background: linear-gradient(135deg, #D4C4F7 0%, #E8DCF9 100%);
-    color: #0F0D1F;
+    color: #060308;
     border-color: rgba(212, 196, 247, 0.3);
     box-shadow: 0 4px 15px rgba(212, 196, 247, 0.25);
 }
@@ -328,34 +328,38 @@ body, html, main {
 
 #content .statblock {
     font-size: 0.8rem;
-    color: #0F0D1F;
+    color: #E8E2F5;
     line-height: 98%;
     font-family: "JetBrains Mono", monospace;
     font-weight: 400;
     border-radius: 6px;
     padding: 8px 12px 6px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 #content .statblock-green {
-    background: linear-gradient(135deg, #B8D4F7 0%, #A5C9F5 100%);
-    border-color: rgba(165, 201, 245, 0.3);
+    background: linear-gradient(135deg, #2D4A4A 0%, #3D5F5F 100%);
+    border-color: rgba(77, 115, 115, 0.4);
+    box-shadow: 0 2px 12px rgba(61, 95, 95, 0.3);
 }
 
 #content .statblock-blue {
-    background: linear-gradient(135deg, #C8B7E8 0%, #B8A4E8 100%);
-    border-color: rgba(184, 164, 232, 0.3);
+    background: linear-gradient(135deg, #2A3B5F 0%, #3A4D7F 100%);
+    border-color: rgba(74, 97, 147, 0.4);
+    box-shadow: 0 2px 12px rgba(58, 77, 127, 0.3);
 }
 
 #content .statblock-yellow {
-    background: linear-gradient(135deg, #E8DCF9 0%, #D4C4F7 100%);
-    border-color: rgba(212, 196, 247, 0.3);
+    background: linear-gradient(135deg, #5F5A3A 0%, #7F774A 100%);
+    border-color: rgba(127, 119, 74, 0.4);
+    box-shadow: 0 2px 12px rgba(95, 90, 58, 0.3);
 }
 
 #content .statblock-red {
-    background: linear-gradient(135deg, #D4B8E8 0%, #C8A4E8 100%);
-    border-color: rgba(200, 164, 232, 0.3);
+    background: linear-gradient(135deg, #5F2A3A 0%, #7F3A4A 100%);
+    border-color: rgba(127, 58, 74, 0.4);
+    box-shadow: 0 2px 12px rgba(95, 42, 58, 0.3);
 }
 
 #content .redlink {
@@ -459,7 +463,7 @@ td pre {
         top: 0;
         bottom: 0;
         width: 100%;
-        background: linear-gradient(180deg, #0F0D1F 0%, #1A1530 100%);
+        background: linear-gradient(180deg, #060308 0%, #0D0A12 100%);
         overflow-y: auto;
         transition: transform cubic-bezier(0.82, 0.08, 0.1, 0.93) 0.3s;
         transform: translateX(-100%);
@@ -496,7 +500,7 @@ td pre {
     #content-header {
         display: flex;
         align-items: center;
-        background: linear-gradient(90deg, #0F0D1F 0%, #1A1530 100%);
+        background: linear-gradient(90deg, #060308 0%, #0D0A12 100%);
         position: absolute;
         top: 0;
         left: 0;
@@ -562,10 +566,10 @@ td pre {
     display: none;
     position: absolute;
     padding: 10px 14px;
-    background: linear-gradient(135deg, #1A1530 0%, #2A2142 100%);
+    background: linear-gradient(135deg, #0D0A12 0%, #15111D 100%);
     border: 1px solid rgba(155, 134, 211, 0.3);
     border-radius: 8px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 20px rgba(155, 134, 211, 0.15);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7), 0 0 20px rgba(155, 134, 211, 0.15);
     z-index: 100;
 }
 
