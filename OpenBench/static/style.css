@@ -2,12 +2,12 @@
 
 a:link, a:visited, a:hover, a:active {
     text-decoration: none;
-    color: #D4A5E8;
+    color: #E095D8;
     transition: color 0.2s ease;
 }
 
 a:hover {
-    color: #E8B8F5;
+    color: #F0ABEA;
 }
 
 body {
@@ -19,7 +19,7 @@ body {
     --color-accent-2: #C8B7E8;
     --color-accent-3: #E87FB8;
     --color-pink: #E87FB8;
-    --color-pink-bright: #F5B8DC;
+    --color-pink-bright: #F0ABEA;
 
     --color-font1: #F2EDF7;
     --color-font2: #D4C4F7;
@@ -99,7 +99,7 @@ body, html, main {
 }
 
 #sidebar .header {
-    color: #E8B8F5;
+    color: #F0ABEA;
     font-size: 1.05rem;
     font-weight: 400;
     pointer-events: none;
@@ -323,9 +323,9 @@ body, html, main {
 }
 
 #content .copy-button:hover {
-    color: #E8B8F5;
+    color: #F0ABEA;
     cursor: pointer;
-    text-shadow: 0 0 10px rgba(232, 184, 245, 0.6);
+    text-shadow: 0 0 10px rgba(240, 171, 234, 0.6);
 }
 
 #content .statblock {
@@ -343,26 +343,26 @@ body, html, main {
 
 #content .statblock-green {
     background: linear-gradient(135deg, #7FDBCA 0%, #93E9D8 100%);
-    border-color: rgba(127, 219, 202, 0.4);
-    box-shadow: 0 2px 12px rgba(127, 219, 202, 0.4);
+    border-color: rgba(127, 219, 202, 0.5);
+    box-shadow: 0 4px 16px rgba(127, 219, 202, 0.5), 0 0 20px rgba(127, 219, 202, 0.3);
 }
 
 #content .statblock-blue {
     background: linear-gradient(135deg, #7FB3E8 0%, #93C8F5 100%);
-    border-color: rgba(127, 179, 232, 0.4);
-    box-shadow: 0 2px 12px rgba(127, 179, 232, 0.4);
+    border-color: rgba(127, 179, 232, 0.5);
+    box-shadow: 0 4px 16px rgba(127, 179, 232, 0.5), 0 0 20px rgba(127, 179, 232, 0.3);
 }
 
 #content .statblock-yellow {
     background: linear-gradient(135deg, #E8D77F 0%, #F5E693 100%);
-    border-color: rgba(232, 215, 127, 0.4);
-    box-shadow: 0 2px 12px rgba(232, 215, 127, 0.4);
+    border-color: rgba(232, 215, 127, 0.5);
+    box-shadow: 0 4px 16px rgba(232, 215, 127, 0.5), 0 0 20px rgba(232, 215, 127, 0.3);
 }
 
 #content .statblock-red {
     background: linear-gradient(135deg, #E87F9D 0%, #F593B0 100%);
-    border-color: rgba(232, 127, 157, 0.4);
-    box-shadow: 0 2px 12px rgba(232, 127, 157, 0.4);
+    border-color: rgba(232, 127, 157, 0.5);
+    box-shadow: 0 4px 16px rgba(232, 127, 157, 0.5), 0 0 20px rgba(232, 127, 157, 0.3);
 }
 
 #content .redlink {
@@ -422,15 +422,15 @@ td pre {
 }
 
 #content .site-title {
-    color: #E8B8F5;
+    color: #F0ABEA;
     font-weight: 500;
     letter-spacing: 1px;
 }
 
 #content .default-network {
-    color: #E8B8F5;
+    color: #F0ABEA;
     transform: scale(1.10);
-    filter: drop-shadow(0 0 5px rgba(232, 184, 245, 0.6));
+    filter: drop-shadow(0 0 5px rgba(240, 171, 234, 0.6));
 }
 
 #content .was-default-network {
@@ -451,7 +451,7 @@ td pre {
 
 #content .branch_name {
     font-style: italic;
-    color: #D4A5E8;
+    color: #E095D8;
 }
 
 #content .active-highlight {
@@ -586,10 +586,10 @@ td pre {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, #D4A5E8 0%, #C8B7E8 100%);
+    background: linear-gradient(180deg, #E095D8 0%, #C8B7E8 100%);
     border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, #E8B8F5 0%, #D4C4F7 100%);
+    background: linear-gradient(180deg, #F0ABEA 0%, #D4C4F7 100%);
 }
