@@ -59,12 +59,12 @@
       "draw_adj": "movenumber=40 movecount=8 score=10"
     },
     "STC tune": {
-      "both_options": "Threads=1 Hash=32",
-      "both_time_control": "8.0+0.08"
+      "dev_options": "Threads=1 Hash=32",
+      "dev_time_control": "8.0+0.08"
     },
     "LTC tune": {
-      "both_options": "Threads=1 Hash=128",
-      "both_time_control": "40.0+0.4"
+      "dev_options": "Threads=1 Hash=128",
+      "dev_time_control": "40.0+0.4"
     }
   }
 }
