@@ -2,12 +2,12 @@
 
 a:link, a:visited, a:hover, a:active {
     text-decoration: none;
-    color: #E87FB8;
+    color: #D4A5E8;
     transition: color 0.2s ease;
 }
 
 a:hover {
-    color: #FF8CD5;
+    color: #E8B8F5;
 }
 
 body {
@@ -19,11 +19,11 @@ body {
     --color-accent-2: #C8B7E8;
     --color-accent-3: #E87FB8;
     --color-pink: #E87FB8;
-    --color-pink-bright: #FF8CD5;
+    --color-pink-bright: #F5B8DC;
 
-    --color-font1: #E8E2F5;
-    --color-font2: #B8A4E8;
-    --color-font3: #C8B7E8;
+    --color-font1: #F2EDF7;
+    --color-font2: #D4C4F7;
+    --color-font3: #E8DCF9;
 
     background-color: var(--color1);
 
@@ -99,7 +99,7 @@ body, html, main {
 }
 
 #sidebar .header {
-    color: var(--color-pink-bright);
+    color: #E8B8F5;
     font-size: 1.05rem;
     font-weight: 400;
     pointer-events: none;
@@ -154,7 +154,7 @@ body, html, main {
 }
 
 #content .table-header th {
-    color: #FF8CD5;
+    color: #E8DCF9;
     font-weight: 400;
     font-size: 0.85rem;
     text-transform: uppercase;
@@ -164,7 +164,7 @@ body, html, main {
 }
 
 #content .table-small-header th {
-    color: #FF8CD5;
+    color: #E8DCF9;
     font-size: 0.75rem;
     background-color: #020103;
     text-transform: uppercase;
@@ -323,9 +323,9 @@ body, html, main {
 }
 
 #content .copy-button:hover {
-    color: var(--color-pink-bright);
+    color: #E8B8F5;
     cursor: pointer;
-    text-shadow: 0 0 10px rgba(232, 127, 184, 0.6);
+    text-shadow: 0 0 10px rgba(232, 184, 245, 0.6);
 }
 
 #content .statblock {
@@ -338,6 +338,7 @@ body, html, main {
     padding: 8px 12px 6px;
     border: 1px solid rgba(255, 255, 255, 0.15);
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(135deg, #C8C8C8 0%, #D8D8D8 100%);
 }
 
 #content .statblock-green {
@@ -421,15 +422,15 @@ td pre {
 }
 
 #content .site-title {
-    color: var(--color-pink-bright);
+    color: #E8B8F5;
     font-weight: 500;
     letter-spacing: 1px;
 }
 
 #content .default-network {
-    color: var(--color-pink-bright);
+    color: #E8B8F5;
     transform: scale(1.10);
-    filter: drop-shadow(0 0 5px rgba(232, 127, 184, 0.6));
+    filter: drop-shadow(0 0 5px rgba(232, 184, 245, 0.6));
 }
 
 #content .was-default-network {
@@ -450,7 +451,7 @@ td pre {
 
 #content .branch_name {
     font-style: italic;
-    color: #E87FB8;
+    color: #D4A5E8;
 }
 
 #content .active-highlight {
@@ -585,10 +586,10 @@ td pre {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, #E87FB8 0%, #C8B7E8 100%);
+    background: linear-gradient(180deg, #D4A5E8 0%, #C8B7E8 100%);
     border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, #FF8CD5 0%, #D4C4F7 100%);
+    background: linear-gradient(180deg, #E8B8F5 0%, #D4C4F7 100%);
 }
