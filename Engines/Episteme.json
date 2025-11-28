@@ -5,7 +5,7 @@
   "build": {
     "path": "",
     "compilers": ["g++", "clang"],
-    "cpuflags": ["SSSE3"],
+    "cpuflags": [],
     "systems": ["Linux", "Windows", "Darwin"]
   },
   "test_presets": {
