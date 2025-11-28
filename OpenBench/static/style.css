@@ -1,25 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@200;300;400;500&family=IBM+Plex+Mono:wght@200;300;400&display=swap');
+
 a:link, a:visited, a:hover, a:active {
     text-decoration: none;
-    color: #E599D0;
+    color: #B8A4E8;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: #D4C4F7;
 }
 
 body {
-    --color1: #222222;
-    --color2: #2D2D2D;
-    --color3: #3B3B3B;
 
-    --color-font1: #DBDEE1;
-    --color-font2: #949BA4;
-    --color-font3: #D4A5E6;
+    --color1: #0F0D1F;
+    --color2: #1A1530;
+    --color3: #2A2142;
+    --color-accent: #9B86D3;
+    --color-accent-2: #C8B7E8;
+    --color-accent-3: #7B5FB8;
+
+    --color-font1: #E8E2F5;
+    --color-font2: #B8A4E8;
+    --color-font3: #C8B7E8;
 
     background-color: var(--color1);
 
-    font-size: 16px;
-    font-family: "Courier Prime", serif;
-    display:flex;
+    font-size: 15px;
+    font-family: "JetBrains Mono", "IBM Plex Mono", "SF Mono", "Roboto Mono", monospace;
+    font-weight: 300;
+    letter-spacing: 0.3px;
+    display: flex;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-body, html, main{
+body, html, main {
     padding: 0;
     margin: 0;
     min-width: 100%;
@@ -28,26 +43,27 @@ body, html, main{
 }
 
 #sidebar {
-    padding: 60px 16px 16px 16px;
-    flex-basis: calc(min(300px, max(200px, 10%)));
+    padding: 60px 20px 20px 20px;
+    flex-basis: calc(min(320px, max(220px, 12%)));
+    background: linear-gradient(180deg, #0F0D1F 0%, #1A1530 100%);
+    border-right: 1px solid rgba(184, 164, 232, 0.12);
 }
 
 #sidebar-toggle {
     display: none;
 }
 
-#content-parent{
+#content-parent {
     flex-grow: 1;
     justify-content: left;
     height: 100%;
-
     box-sizing: border-box;
-    padding-left: 2rem;
-    padding-right: 2rem;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
 }
 
 #content {
-    max-width: calc(min(100%,1000px));
+    max-width: calc(min(100%, 1100px));
     width: 100%;
     white-space: nowrap;
     display: inline-block;
@@ -55,15 +71,17 @@ body, html, main{
 
 #sidebar ul {
     list-style-type: none;
-    padding: 0px 16px 0px 8px;
-    line-height: 1.75;
+    padding: 0px 12px 0px 8px;
+    line-height: 2;
 }
 
 #sidebar li {
-    padding: 4px 16px 2px;
-    font-size: 1.0rem;
-    border-radius: 4px;
-    transition: background-color 0.2s ease-in-out;
+    padding: 8px 16px;
+    font-size: 0.95rem;
+    font-weight: 300;
+    border-radius: 6px;
+    border-left: 2px solid transparent;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 #sidebar li a {
@@ -73,48 +91,47 @@ body, html, main{
 }
 
 #sidebar li:hover {
-    background-color: #303030;
+    background-color: rgba(155, 134, 211, 0.1);
+    border-left-color: var(--color-accent);
+    transform: translateX(4px);
 }
 
 #sidebar .header {
     color: var(--color-font3);
-    font-size: 1.1rem;
+    font-size: 1.05rem;
+    font-weight: 400;
     pointer-events: none;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
 }
 
 #sidebar hr {
-    border: 1px var(--color2) solid;
+    border: none;
+    border-top: 1px solid rgba(184, 164, 232, 0.15);
+    margin: 1.5rem 0;
 }
-
-/* Table Striping, with overriding for the Table Header */
 
 #content .stripes tr:nth-child(odd):not(.table-header) {
     background-color: var(--color1);
 }
 
 #content .stripes tr:nth-child(even):not(.table-header) {
-    background-color: var(--color2);
+    background-color: rgba(155, 134, 211, 0.04);
 }
 
 #content .stripes th {
-    background-color: black;
+    background-color: #0B0918;
 }
 
-/* Tables that have hoverable table rows */
-
-#content .hoverable tr:nth-child(odd):hover:not(.table-header) {
-    background-color: #323232;
-}
-
+#content .hoverable tr:nth-child(odd):hover:not(.table-header),
 #content .hoverable tr:nth-child(even):hover:not(.table-header) {
-    background-color: #323232;
+    background-color: rgba(155, 134, 211, 0.12);
+    box-shadow: inset 0 0 20px rgba(155, 134, 211, 0.08);
 }
 
-#content .hoverable tr:hover{
-    background-color: var(--color1);
+#content .hoverable tr:hover {
+    background-color: rgba(200, 183, 232, 0.08);
 }
-
-/* Tables that are too long can wrap words */
 
 #content .wrappable td {
     white-space: pre-wrap;
@@ -122,35 +139,35 @@ body, html, main{
     word-wrap: break-word;
 }
 
-/* Things which enable a Cursor Pointer event */
-
 #content .cursor {
     cursor: pointer;
 }
 
-/* Table Headers in General */
-
 #content .table-header th:first-child {
-    border-top-left-radius: 12px;
+    border-top-left-radius: 8px;
 }
 
 #content .table-header th:last-child {
-    border-top-right-radius: 12px;
+    border-top-right-radius: 8px;
 }
 
 #content .table-header th {
     color: var(--color-font3);
     font-weight: 400;
-    background-color: #171717;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    background: linear-gradient(135deg, #0B0918 0%, #1A1530 100%);
+    border-bottom: 2px solid var(--color-accent);
 }
 
 #content .table-small-header th {
     color: var(--color-font3);
-    font-size: small;
-    background-color: #171717;
+    font-size: 0.75rem;
+    background-color: #0B0918;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
-
-/* Table Spacer for chaining Tables as a hack */
 
 #content .table-spacer th, #content .table-spacer tr {
     background-color: var(--color1);
@@ -158,158 +175,202 @@ body, html, main{
 }
 
 #content .table-spacer-small th, #content .table-spacer-small tr {
-    background-color: #171717;
+    background-color: #0B0918;
     height: 0.4rem;
     padding: 0px;
 }
 
-/* Generic Table CSS for all Tables */
-
 #content table {
-    line-height: 96%;
+    line-height: 100%;
     border-collapse: collapse;
+    border-spacing: 0;
 }
 
 #content td {
     color: var(--color-font2);
-    border-bottom: 1px #444444 solid;
+    border-bottom: 1px solid rgba(155, 134, 211, 0.12);
+    font-size: 0.9rem;
 }
 
 #content th, #content td {
-    padding: 10px 12px 6px 12px;
+    padding: 12px 16px;
 }
 
 #content .anchor-container {
     display: flex;
     justify-content: space-between;
+    gap: 6px;
 }
 
 #content .anchor-container > .anchorbutton {
     flex: 1;
-    margin-right: 4px;
-}
-
-#content .anchor-container > .anchorbutton:last-child {
-    margin-right: 0px;
+    margin-right: 0;
 }
 
 #content .anchorbutton {
-    border-radius: 4px;
-    padding: 8px 0px 6px;
-    border-color: transparent;
+    border-radius: 6px;
+    padding: 10px 0px 8px;
+    border: 1px solid transparent;
     color: var(--color-font1);
     display: inline-block;
     text-align: center;
-    transition: background-color 0.3s ease;
-    font-family: "Courier Prime", serif;
-    font-size: 13px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.85rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
     cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+#content .anchorbutton::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.5s;
+}
+
+#content .anchorbutton:hover::before {
+    left: 100%;
 }
 
 #content .btn-blue {
-    background-color: #3D2D5A; /* Purple-violet instead of blue */
+    background: linear-gradient(135deg, #4A3D7A 0%, #6B5B95 100%);
+    border-color: rgba(107, 91, 149, 0.3);
+    box-shadow: 0 4px 15px rgba(107, 91, 149, 0.25);
 }
 
 #content .btn-start {
-    background-color: #5A3F7E; /* Brighter purple-violet */
+    background: linear-gradient(135deg, #8B73C7 0%, #B8A4E8 100%);
+    color: #0F0D1F;
+    border-color: rgba(139, 115, 199, 0.4);
+    box-shadow: 0 4px 20px rgba(139, 115, 199, 0.35);
     width: 100%;
+    font-weight: 500;
 }
 
 #content .btn-preset {
-    background-color: #6B4C8A; /* Purple instead of green */
+    background: linear-gradient(135deg, #9B86D3 0%, #C8B7E8 100%);
+    color: #0F0D1F;
+    border-color: rgba(155, 134, 211, 0.3);
+    box-shadow: 0 4px 15px rgba(155, 134, 211, 0.25);
 }
 
 #content .btn-yellow {
-    background-color: #8B6F47; /* Keeping warm tone but with purple undertone */
+    background: linear-gradient(135deg, #D4C4F7 0%, #E8DCF9 100%);
+    color: #0F0D1F;
+    border-color: rgba(212, 196, 247, 0.3);
+    box-shadow: 0 4px 15px rgba(212, 196, 247, 0.25);
 }
 
 #content .btn-red {
-    background-color: #8B4A6C; /* Purple-pink instead of pure red */
+    background: linear-gradient(135deg, #9B7AB8 0%, #B898D3 100%);
+    color: #E8E2F5;
+    border-color: rgba(155, 122, 184, 0.3);
+    box-shadow: 0 4px 15px rgba(155, 122, 184, 0.25);
 }
 
 #content .btn-disabled {
-    background-color: var(--color3);
+    background: linear-gradient(135deg, var(--color3) 0%, #232D42 100%);
+    border-color: rgba(160, 170, 184, 0.1);
+    box-shadow: none;
+    opacity: 0.5;
 }
 
 #content .btn-blue:hover {
-    background-color: #4F3D72; /* Lighter purple on hover */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(107, 91, 149, 0.45);
 }
 
 #content .btn-start:hover {
-    background-color: #6B4F96; /* Lighter purple on hover */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 30px rgba(139, 115, 199, 0.55);
 }
 
 #content .btn-preset:hover {
-    background-color: #7D5C9E; /* Lighter purple on hover */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(155, 134, 211, 0.45);
 }
 
 #content .btn-yellow:hover {
-    background-color: #9D8159; /* Lighter warm purple on hover */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(212, 196, 247, 0.45);
 }
 
 #content .btn-red:hover {
-    background-color: #9D5C7E; /* Lighter purple-pink on hover */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(155, 122, 184, 0.45);
 }
 
 #content .btn-disabled:hover {
-    background-color: var(--color3);
+    background: linear-gradient(135deg, var(--color3) 0%, #232D42 100%);
     cursor: not-allowed;
     transform: none;
+    box-shadow: none;
 }
 
 #content .copy-button {
     color: var(--color-font2);
-    transition: color 0.2s ease-in-out;
-
+    transition: all 0.2s ease-in-out;
 }
 
 #content .copy-button:hover {
-    color: var(--color-font3);
+    color: var(--color-accent);
     cursor: pointer;
+    text-shadow: 0 0 10px rgba(155, 134, 211, 0.6);
 }
 
-/* Short StatBlock to show SPRT and Test Results */
-
 #content .statblock {
-    font-size: 13px;
-    color: black;
-    line-height: 92%;
-    background-color: #CCCCCC;
-    font-family: "Courier New";
-    border-radius: 4px;
-    padding: 7px 10px 4px;
+    font-size: 0.8rem;
+    color: #0F0D1F;
+    line-height: 98%;
+    font-family: "JetBrains Mono", monospace;
+    font-weight: 400;
+    border-radius: 6px;
+    padding: 8px 12px 6px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 #content .statblock-green {
-    background-color: #76D576;
+    background: linear-gradient(135deg, #B8D4F7 0%, #A5C9F5 100%);
+    border-color: rgba(165, 201, 245, 0.3);
 }
 
 #content .statblock-blue {
-    background-color: #60F0FF;
+    background: linear-gradient(135deg, #C8B7E8 0%, #B8A4E8 100%);
+    border-color: rgba(184, 164, 232, 0.3);
 }
 
 #content .statblock-yellow {
-    background-color: #EFF891;
+    background: linear-gradient(135deg, #E8DCF9 0%, #D4C4F7 100%);
+    border-color: rgba(212, 196, 247, 0.3);
 }
 
 #content .statblock-red {
-    background-color: #FA9696;
+    background: linear-gradient(135deg, #D4B8E8 0%, #C8A4E8 100%);
+    border-color: rgba(200, 164, 232, 0.3);
 }
 
 #content .redlink {
-    color: #FF4D4D;
+    color: #C8A4E8;
 }
-
-/* Long StatBlock which we can copy */
 
 #content .long-statblock {
-    background-color: var(--color3);
+    background-color: rgba(155, 134, 211, 0.06);
     color: var(--color-font2);
-    border-radius: 4px;
-    padding: 0.50rem 0.75rem;
+    border-radius: 6px;
+    border: 1px solid rgba(155, 134, 211, 0.2);
+    padding: 0.75rem 1rem;
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: 300;
 }
-
-/* Test Views */
 
 #content #config {
     float: left;
@@ -325,14 +386,13 @@ body, html, main{
 }
 
 #content .test-config {
-    font-size: 1.0rem;
+    font-size: 0.95rem;
 }
 
 #content .test-config .td-label {
     color: var(--color-font1);
+    font-weight: 400;
 }
-
-/* ??? */
 
 td pre {
     margin: 0px;
@@ -340,50 +400,58 @@ td pre {
 }
 
 #content .error-message {
-    color: red;
+    color: #D4B8E8;
+    font-weight: 400;
 }
 
 #content .warning-message {
-    color: yellow;
+    color: #E8DCF9;
+    font-weight: 400;
 }
 
 #content .status-message {
-    color: green;
+    color: #B8D4F7;
+    font-weight: 400;
 }
 
 #content .site-title {
-    color: var(--color-font3);
+    color: var(--color-accent);
+    font-weight: 500;
+    letter-spacing: 1px;
 }
 
 #content .default-network {
-    color: var(--color-font3);
+    color: var(--color-accent);
     transform: scale(1.10);
+    filter: drop-shadow(0 0 5px rgba(155, 134, 211, 0.6));
 }
 
 #content .was-default-network {
-    color: #EFF891;
+    color: #C8B7E8;
     transform: scale(0.90);
 }
 
 #content .non-default-network {
     color: var(--color-font1);
     transform: scale(0.70);
+    opacity: 0.6;
 }
-
 
 #content .numeric {
     text-align: right;
+    font-variant-numeric: tabular-nums;
 }
 
 #content .branch_name {
     font-style: italic;
+    color: #C8B7E8;
 }
 
 #content .active-highlight {
-    border-left: 4px solid var(--color-font3);
+    border-left: 3px solid var(--color-accent);
+    box-shadow: inset 0 0 15px rgba(155, 134, 211, 0.15);
 }
 
-/* Styles for screen widths less than 768px */
 @media (max-width: 767px) {
     #sidebar {
         flex-basis: 100%;
@@ -391,10 +459,11 @@ td pre {
         top: 0;
         bottom: 0;
         width: 100%;
-        background-color: var(--color1);
+        background: linear-gradient(180deg, #0F0D1F 0%, #1A1530 100%);
         overflow-y: auto;
         transition: transform cubic-bezier(0.82, 0.08, 0.1, 0.93) 0.3s;
         transform: translateX(-100%);
+        z-index: 1000;
     }
 
     body.sidebar-open #sidebar {
@@ -403,7 +472,7 @@ td pre {
 
     #sidebar-toggle {
         display: flex;
-        padding: 10px;
+        padding: 12px;
         color: var(--color-font1);
         background-color: transparent;
         border: none;
@@ -416,7 +485,7 @@ td pre {
         height: auto;
         flex-grow: 0;
         flex-basis: 100%;
-        padding: 0 8px;
+        padding: 0 12px;
     }
 
     #content {
@@ -427,17 +496,17 @@ td pre {
     #content-header {
         display: flex;
         align-items: center;
-        background-color: var(--color1);
+        background: linear-gradient(90deg, #0F0D1F 0%, #1A1530 100%);
         position: absolute;
         top: 0;
         left: 0;
         z-index: 10;
+        border-bottom: 1px solid rgba(184, 164, 232, 0.12);
     }
 
     #content-header h2 {
-        /* Adjust the font size to the screen width, ensuring that the title doesn't overflow */
         font-size: clamp(1.0rem, 4.8vw, 1.4rem);
-        margin: 8px 0;
+        margin: 10px 0;
     }
 
     #content-header .site-title {
@@ -448,25 +517,20 @@ td pre {
         flex-direction: column;
     }
 
-    /* Disable vertical body scrolling when the sidebar is open */
     body.sidebar-open {
         position: fixed;
         overflow-y: hidden;
     }
 
-    /* Horizontally scrollable table */
     table {
         display: block;
         overflow-x: auto;
     }
 
-    /* Tables cannot break words to avoid issues such as single-letter lines */
-    /* The only exception is the test config table */
     #content .wrappable:not(.workload-container .test-config) td {
         word-break: normal;
     }
 
-    /* Test Views */
     .workload-container {
         display: flex;
         flex-direction: column;
@@ -486,9 +550,6 @@ td pre {
     }
 }
 
-
-/* On-hover for long engine options in workloads */
-
 #content .engine-options {
     position: relative;
 }
@@ -500,9 +561,28 @@ td pre {
 #content .engine-options-popup {
     display: none;
     position: absolute;
-    padding: 8px 12px;
-    background-color: #000;
-    border: 1px solid #ccc;
+    padding: 10px 14px;
+    background: linear-gradient(135deg, #1A1530 0%, #2A2142 100%);
+    border: 1px solid rgba(155, 134, 211, 0.3);
     border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 20px rgba(155, 134, 211, 0.15);
+    z-index: 100;
 }
 
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color2);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #9B86D3 0%, #C8B7E8 100%);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #B09AD9 0%, #D4C4F7 100%);
+}
