@@ -44,6 +44,51 @@ body, html, main {
     white-space: nowrap;
 }
 
+input, textarea, select {
+    font-family: "JetBrains Mono", "IBM Plex Mono", "SF Mono", "Roboto Mono", monospace;
+    font-weight: 300;
+    letter-spacing: 0.3px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="number"],
+input[type="url"],
+textarea,
+select {
+    background-color: rgba(21, 17, 29, 0.6);
+    color: var(--color-font1);
+    border: 1px solid rgba(232, 127, 184, 0.2);
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="search"]:focus,
+input[type="number"]:focus,
+input[type="url"]:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: var(--color-pink);
+    background-color: rgba(21, 17, 29, 0.8);
+    box-shadow: 0 0 12px rgba(232, 127, 184, 0.3);
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: rgba(212, 196, 247, 0.5);
+    font-weight: 200;
+}
+
 #sidebar {
     padding: 60px 20px 20px 20px;
     flex-basis: calc(min(320px, max(220px, 12%)));
