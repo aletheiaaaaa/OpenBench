@@ -24,8 +24,6 @@
     vertical-align: top;
 }
 
-/* Styles for screen widths less than 600px */
-
 @media (max-width: 1024px) {
     #content .form .col {
         display: block;
@@ -52,55 +50,71 @@
     min-width: 128px;
     margin-right: 1rem;
     text-align: right;
-    color: var(--color-font2)
+    color: var(--color-font2);
 }
-
 
 #content .row input, #content .row select, #content .row textarea {
     flex-grow: 1;
     min-width: 0;
-    border: 1px solid var(--color3);
-    border-radius: 4px;
-    padding: 9px 6px 6px;
-    background-color: var(--color2);
-    color: var(--color-font2);
-    font-family: "Courier Prime", serif;
+    border: 1px solid rgba(232, 127, 184, 0.2);
+    border-radius: 6px;
+    padding: 9px 8px 7px;
+    background-color: rgba(21, 17, 29, 0.6);
+    color: var(--color-font1);
+    font-family: "JetBrains Mono", "IBM Plex Mono", "SF Mono", "Roboto Mono", monospace;
+    font-weight: 300;
+    letter-spacing: 0.3px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
 }
 
-#content .row input[type="file"]{
+#content .row input[type="file"] {
     padding: 2px 2px;
 }
 
 #content .row input:focus, #content .row select:focus, #content .row textarea:focus {
     outline: none;
-    border-color: var(--color3);
-    box-shadow: 0 0 0 2px rgba(77, 144, 254, 0.75);
-    background-color: var(--color2);
-    color: var(--color-font2);
+    border-color: var(--color-pink);
+    box-shadow: 0 0 12px rgba(232, 127, 184, 0.3);
+    background-color: rgba(21, 17, 29, 0.8);
+    color: var(--color-font1);
 }
 
-#content .row select > option{
-    font-family: "Helvetica", serif;
+#content .row input::placeholder, #content .row textarea::placeholder {
+    color: rgba(212, 196, 247, 0.5);
+    font-weight: 200;
+}
+
+#content .row select > option {
+    font-family: "JetBrains Mono", "IBM Plex Mono", monospace;
+    background-color: var(--color2);
+    color: var(--color-font1);
 }
 
 #content .row input[type="file"]::file-selector-button {
-    background-color: var(--color3);
-    border: 1px solid var(--color2);
-    border-radius: 4px;
-    padding: 6px 6px 3px;
-    color: var(--color-font2);
+    background: linear-gradient(135deg, #4A3D7A 0%, #6B5B95 100%);
+    border: 1px solid rgba(107, 91, 149, 0.3);
+    border-radius: 6px;
+    padding: 6px 10px 5px;
+    color: var(--color-font1);
     cursor: pointer;
-    transition: background-color 0.3s, border-color 0.3s;
-    font-family: "Courier Prime", serif;
+    transition: all 0.3s ease;
+    font-family: "JetBrains Mono", "IBM Plex Mono", monospace;
+    font-weight: 300;
+    font-size: 0.85rem;
+    margin-right: 8px;
 }
 
 #content .row input[type="file"]::file-selector-button:hover {
-    background-color: rgba(77, 144, 254, 0.8);
-    border-color: var(--color2);
+    background: linear-gradient(135deg, #5D4E94 0%, #7D6DAF 100%);
+    box-shadow: 0 4px 12px rgba(107, 91, 149, 0.4);
+    transform: translateY(-1px);
 }
 
 #content .row input[readonly] {
-    color: var(--color-font1);
+    color: var(--color-font2);
+    background-color: rgba(21, 17, 29, 0.3);
+    border-color: rgba(155, 134, 211, 0.15);
 }
 
 #content .form .flex {
@@ -110,7 +124,7 @@
     justify-content: flex-start;
 }
 
-#content .form .flex button{
+#content .form .flex button {
     max-width: 100%;
 }
 
