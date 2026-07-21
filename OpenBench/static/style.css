@@ -401,7 +401,7 @@ textarea::placeholder {
 #content .test-list td {
     word-break: break-word;
     vertical-align: middle;
-    padding: 22px 16px;
+    padding: 15px 16px;
     text-transform: lowercase;
 }
 
@@ -572,6 +572,11 @@ td.statblock {
 
 #content .test-list td.statblock {
     padding: 28px 26px;
+}
+
+#index-table td.statblock,
+#index-table td.statblock strong {
+    font-weight: 300;
 }
 
 #content .long-statblock {
