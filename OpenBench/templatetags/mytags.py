@@ -131,10 +131,7 @@ def testResultColour(test):
         if test.wins >= test.losses: return 'yellow'
         return 'red'
 
-    # Actively running: lean blue if trending toward H1 (pass), else yellow
-    if test.approved and not test.awaiting and not test.finished:
-        return 'blue' if test.currentllr > 0 else 'yellow'
-
+    # Pending, awaiting, and actively-running tests all read as neutral grey
     return ''
 
 def sumAttributes(iterable, attribute):

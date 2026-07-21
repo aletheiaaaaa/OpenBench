@@ -203,19 +203,17 @@ def getMachineStatus(username=None):
 
 def getIndexMetrics():
 
-    cores_online = sum([f.info['concurrency'] for f in getRecentMachines()])
+    machines     = getRecentMachines()
+    cores_online = sum([f.info['concurrency'] for f in machines])
+    mnps         = sum([f.info['concurrency'] * f.mnps for f in machines])
 
-    now   = timezone.now()
-    stats = DailyStats.objects.filter(date=now.date()).first()
+    stats = DailyStats.objects.filter(date=timezone.now().date()).first()
     games_today = stats.games if stats else 0
 
-    midnight        = now.replace(hour=0, minute=0, second=0, microsecond=0)
-    seconds_elapsed = max(1, (now - midnight).total_seconds())
-
     return {
-        'cores_online'  : cores_online,
-        'games_today'   : games_today,
-        'games_per_sec' : round(games_today / seconds_elapsed, 1),
+        'cores_online' : cores_online,
+        'games_today'  : games_today,
+        'mnps'         : round(mnps, 2),
     }
 
 def getPaging(content, page, url, pagelen=25):

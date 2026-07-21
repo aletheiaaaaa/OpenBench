@@ -21,8 +21,8 @@
                 <div class="metric-value">{{metrics.active_tests|insertCommas}}</div>
             </div>
             <div class="metric-cell">
-                <div class="metric-label">Games / Sec</div>
-                <div class="metric-value">{{metrics.games_per_sec}}</div>
+                <div class="metric-label">MNPS</div>
+                <div class="metric-value">{{metrics.mnps}}</div>
             </div>
             <div class="metric-cell">
                 <div class="metric-label">Games Today</div>
@@ -34,12 +34,12 @@
     <table class="test-list stripes hoverable">
 
         <colgroup>
-            <col style="width: 9%">
-            <col style="width: 12%">
-            <col style="width: 37%">
-            <col style="width: 6%">
             <col style="width: 13%">
-            <col style="width: 23%">
+            <col style="width: 12%">
+            <col style="width: 30%">
+            <col style="width: 6%">
+            <col style="width: 12%">
+            <col style="width: 27%">
         </colgroup>
 
         <tr class="table-header">
@@ -56,7 +56,7 @@
 
             <!-- Currently Pending tests (Waiting to be approved) -->
             {% if pending %}
-                <tr class="table-header"><th colspan='6'><span class="group-eyebrow">// PENDING</span> <span class="group-count">&mdash; {{pending|length}}</span></th></tr>
+                <tr class="table-header"><th colspan='6'><span class="group-eyebrow">// PENDING</span> <span class="group-count">&mdash; {{pending|length}} queued</span></th></tr>
                 {% for test in pending %}
                     <tr>
                         {% include "OpenBench/Blocks/testsummary.html" %}
@@ -67,7 +67,7 @@
 
             <!-- Currently Awaiting tests (Waiting for Artifacts) -->
             {% if awaiting %}
-                <tr class="table-header"><th colspan='6'><span class="group-eyebrow">// AWAITING ARTIFACTS</span> <span class="group-count">&mdash; {{awaiting|length}}</span></th></tr>
+                <tr class="table-header"><th colspan='6'><span class="group-eyebrow">// AWAITING ARTIFACTS</span> <span class="group-count">&mdash; {{awaiting|length}} awaiting</span></th></tr>
                 {% for test in awaiting %}
                     <tr>
                         {% include "OpenBench/Blocks/testsummary.html" %}
@@ -77,8 +77,8 @@
             {% endif %}
 
             <!-- Currently Running tests (Waiting to be completed) -->
-            <!-- Always show this header + machine status, even with 0 active tests -->
-            <tr class="table-header"><th colspan='6'><span class="group-eyebrow">// ACTIVE {{status}}</span> <span class="group-count">&mdash; {{active|length}}</span></th></tr>
+            <!-- Always show this header, even with 0 active tests; the metrics strip up top already covers cluster status -->
+            <tr class="table-header"><th colspan='6'><span class="group-eyebrow">// ACTIVE</span> <span class="group-count">&mdash; {{active|length}} running</span></th></tr>
             {% for test in active %}
 
                 <!-- Add two empty rows ( for the colouring scheme ) when changing prio -->
@@ -98,7 +98,7 @@
         {% endif %}
 
         <!-- Tests which have already finished -->
-        <tr class="table-header"><th colspan='6'><span class="group-eyebrow">// FINISHED</span> <span class="group-count">&mdash; {{completed|length}}</span></th></tr>
+        <tr class="table-header"><th colspan='6'><span class="group-eyebrow">// FINISHED</span> <span class="group-count">&mdash; {{completed|length}} shown</span></th></tr>
         {% for test in completed %}
             <tr>
                 {% include "OpenBench/Blocks/testsummary.html" %}

@@ -558,7 +558,7 @@ td.statblock {
     border-left: 3px solid var(--result-gray);
     color: var(--result-gray);
     background: color-mix(in srgb, var(--result-gray) 9%, transparent);
-    padding: var(--cellpad);
+    padding: 20px 22px;
 }
 
 #content .statblock-green {
