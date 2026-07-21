@@ -4,22 +4,27 @@
     border-radius: 10px;
     padding: 20px 22px;
     box-sizing: border-box;
-    break-inside: avoid;
-    -webkit-column-break-inside: avoid;
     margin-bottom: 18px;
-    display: inline-block;
     width: 100%;
 }
 
 #content .form-columns {
-    column-count: 2;
-    column-gap: 18px;
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
     width: 100%;
+}
+
+#content .form-col {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
 }
 
 @media (max-width: 1024px) {
     #content .form-columns {
-        column-count: 1;
+        flex-direction: column;
     }
 }
 

@@ -15,6 +15,7 @@
 
     <div class="form-columns">
 
+    <div class="form-col">
     <form method="POST" action="/profile/">
         {% csrf_token %}
         <div class="form">
@@ -39,7 +40,9 @@
             <input class="anchorbutton btn-start w-100" type="submit" value="Update Profile">
         </div>
     </form>
+    </div>
 
+    <div class="form-col">
     <form method="POST" action="/profileConfig/">
         {% csrf_token %}
         <div class="form" id="engines-container">
@@ -80,6 +83,7 @@
             <input class="anchorbutton btn-start w-100" type="submit" name="add-engine" value="Save Configuration">
         </div>
     </form>
+    </div>
 
     </div>
 

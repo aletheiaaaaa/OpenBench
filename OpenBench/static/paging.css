@@ -42,13 +42,13 @@
     color: var(--text-dim);
 }
 
-.current {
+.page.current {
     background-color: var(--accent);
     color: var(--bg-base);
     border-color: var(--accent);
 }
 
-.current:hover {
+.page.current:hover {
     background-color: var(--accent-hi);
     color: var(--bg-base);
     border-color: var(--accent-hi);

@@ -30,6 +30,24 @@
 
     <table class="test-list stripes hoverable">
 
+        <colgroup>
+            <col style="width: 9%">
+            <col style="width: 12%">
+            <col style="width: 37%">
+            <col style="width: 6%">
+            <col style="width: 13%">
+            <col style="width: 23%">
+        </colgroup>
+
+        <tr class="table-header">
+            <th>Author</th>
+            <th>Engine</th>
+            <th>Test</th>
+            <th>Diff</th>
+            <th>TC</th>
+            <th>Result</th>
+        </tr>
+
         <!-- Only show Pending tests for the front page of the Index -->
         {% if paging.page == 1 %}
 

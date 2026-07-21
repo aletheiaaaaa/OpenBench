@@ -34,8 +34,8 @@ body {
     --text-ghost: #44444c;
     --text-ghost-2: #3a3a42;
 
-    --accent: #ff7a1a;
-    --accent-hi: #ff9d52;
+    --accent: #a78bfa;
+    --accent-hi: #c4b5fd;
 
     --result-green: #3fb950;
     --result-red: #f85149;
@@ -385,6 +385,15 @@ textarea::placeholder {
 
 #content th, #content td {
     padding: var(--cellpad);
+}
+
+#content .test-list {
+    table-layout: fixed;
+    width: 100%;
+}
+
+#content .test-list td {
+    word-break: break-word;
 }
 
 /* group eyebrow row, e.g. "// Pending  — 3" */
