@@ -74,24 +74,23 @@
             {% endif %}
 
             <!-- Currently Running tests (Waiting to be completed) -->
-            {% if active %}
-                <tr class="table-header"><th colspan='6'><span class="group-eyebrow">// ACTIVE {{status}}</span> <span class="group-count">&mdash; {{active|length}}</span></th></tr>
-                {% for test in active %}
+            <!-- Always show this header + machine status, even with 0 active tests -->
+            <tr class="table-header"><th colspan='6'><span class="group-eyebrow">// ACTIVE {{status}}</span> <span class="group-count">&mdash; {{active|length}}</span></th></tr>
+            {% for test in active %}
 
-                    <!-- Add two empty rows ( for the colouring scheme ) when changing prio -->
-                    {% with prev_test=active|previous:forloop.counter0 %}
-                        {% if prev_test and prev_test.priority != test.priority %}
-                            <tr class="table-spacer-small"><th colspan='6'></th></tr>
-                            <tr class="table-spacer-small"><th colspan='6'></th></tr>
-                        {% endif %}
-                    {% endwith %}
+                <!-- Add two empty rows ( for the colouring scheme ) when changing prio -->
+                {% with prev_test=active|previous:forloop.counter0 %}
+                    {% if prev_test and prev_test.priority != test.priority %}
+                        <tr class="table-spacer-small"><th colspan='6'></th></tr>
+                        <tr class="table-spacer-small"><th colspan='6'></th></tr>
+                    {% endif %}
+                {% endwith %}
 
-                    <tr>
-                        {% include "OpenBench/Blocks/testsummary.html" %}
-                    </tr>
-                {% endfor %}
-                <tr class="table-spacer"><th colspan='6'></th></tr>
-            {% endif %}
+                <tr>
+                    {% include "OpenBench/Blocks/testsummary.html" %}
+                </tr>
+            {% endfor %}
+            <tr class="table-spacer"><th colspan='6'></th></tr>
 
         {% endif %}
 

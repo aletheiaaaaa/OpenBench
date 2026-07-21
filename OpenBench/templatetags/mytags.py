@@ -60,8 +60,9 @@ def gitDiffLink(test):
 
 def shortStatBlock(test):
 
-    tri_line   = 'Games: %d W: %d L: %d D: %d' % test.as_nwld()
-    penta_line = 'Ptnml(0-2): %d, %d, %d, %d, %d' % test.as_penta()
+    # Not yet running: queued for approval, or approved but awaiting artifacts
+    if not test.approved or test.awaiting:
+        return 'QUEUED\nawaiting\napproval'
 
     if test.test_mode == 'SPSA':
         statlines = [
@@ -70,22 +71,27 @@ def shortStatBlock(test):
             '%d/%d Games Played' % (test.games, 2 * test.spsa['iterations'] * test.spsa['pairs_per'])]
 
     elif test.test_mode == 'SPRT':
-        llr_line = 'LLR: %0.2f (%0.2f, %0.2f) [%0.2f, %0.2f]' % (
-            test.currentllr, test.lowerllr, test.upperllr, test.elolower, test.eloupper)
+        if test.passed:
+            llr_line = 'LLR  %0.2f  PASS' % test.currentllr
+        elif test.failed:
+            llr_line = 'LLR  %0.2f  FAIL' % test.currentllr
+        else:
+            llr_line = 'LLR  %0.2f  (%0.2f, %0.2f)' % (test.currentllr, test.lowerllr, test.upperllr)
         lower, elo, upper = OpenBench.stats.Elo(test.results())
-        elo_line = 'Elo: %+0.2f ± %0.2f (95%%)' % (elo, max(upper - elo, elo - lower))
-        statlines = [llr_line, tri_line, penta_line, elo_line] if test.use_penta else [llr_line, tri_line]
+        elo_line = 'Elo  %+0.1f ± %0.1f' % (elo, max(upper - elo, elo - lower))
+        statlines = [llr_line, elo_line, '%d games' % test.games]
 
     elif test.test_mode == 'GAMES':
+        status_line = 'PASS' if test.passed else 'FAIL' if test.failed else '%d/%d games' % (test.games, test.max_games)
         lower, elo, upper = OpenBench.stats.Elo(test.results())
-        elo_line = 'Elo: %+0.2f ± %0.2f (95%%) [N=%d]' % (elo, max(upper - elo, elo - lower), test.max_games)
-        statlines = [elo_line, tri_line, penta_line] if test.use_penta else [elo_line, tri_line]
+        elo_line = 'Elo  %+0.1f ± %0.1f' % (elo, max(upper - elo, elo - lower))
+        statlines = [status_line, elo_line, '%d games' % test.games]
 
     elif test.test_mode == 'DATAGEN':
         status_line = 'Generated %d/%d Games' % (test.games, test.max_games)
         lower, elo, upper = OpenBench.stats.Elo(test.results())
-        elo_line = 'Elo: %+0.2f ± %0.2f (95%%) [N=%d]' % (elo, max(upper - elo, elo - lower), test.max_games)
-        statlines = [status_line, elo_line, penta_line] if test.use_penta else [status_line, elo_line, tri_line]
+        elo_line = 'Elo  %+0.1f ± %0.1f' % (elo, max(upper - elo, elo - lower))
+        statlines = [status_line, elo_line]
 
     return '\n'.join(statlines)
 
@@ -124,6 +130,11 @@ def testResultColour(test):
     if test.failed:
         if test.wins >= test.losses: return 'yellow'
         return 'red'
+
+    # Actively running: lean blue if trending toward H1 (pass), else yellow
+    if test.approved and not test.awaiting and not test.finished:
+        return 'blue' if test.currentllr > 0 else 'yellow'
+
     return ''
 
 def sumAttributes(iterable, attribute):
