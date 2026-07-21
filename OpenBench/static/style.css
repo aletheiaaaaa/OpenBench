@@ -401,7 +401,7 @@ textarea::placeholder {
 #content .test-list td {
     word-break: break-word;
     vertical-align: middle;
-    padding: 11px 16px;
+    padding: 15px 16px;
     text-transform: lowercase;
 }
 
