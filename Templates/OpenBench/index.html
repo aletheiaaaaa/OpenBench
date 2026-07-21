@@ -6,8 +6,11 @@
 
     <meta http-equiv="refresh" content="30">
 
-    <!-- Only show the metrics strip on the front page of the Index -->
-    {% if paging.page == 1 %}
+    <!-- Only show the metrics strip on the front page of the real Index route.
+         'metrics' is only supplied by views.index() -- the greens() and user()
+         views also render this template but don't compute it, so gate on its
+         presence to avoid crashing insertCommas on a missing value. -->
+    {% if metrics and paging.page == 1 %}
         <div class="metrics-strip">
             <div class="metric-cell">
                 <div class="metric-label">Cores Online</div>
