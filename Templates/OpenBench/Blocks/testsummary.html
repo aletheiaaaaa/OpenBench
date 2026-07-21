@@ -1,5 +1,5 @@
 {% load mytags %}
-<td><a href="/user/{{test.author}}">{{test.author|capfirst|slice:":6"}}</a></td>
+<td><a href="/user/{{test.author}}">{{test.author|lower}}</a></td>
 <td>{{test.dev_engine}}</td>
 <td>
     {% if test.approved and not test.awaiting and not test.finished %}<span class="ob-active-dot"></span>{% endif %}

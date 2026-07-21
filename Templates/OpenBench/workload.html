@@ -14,7 +14,7 @@
     <div class="workload-header">
         <a class="back-link" href="/index"><i class="fa-solid fa-arrow-left"></i> index</a>
         <span class="title">
-            {{workload.author|capfirst}} <span class="sep">/</span>
+            {{workload.author|lower}} <span class="sep">/</span>
             <span class="branch_name">{{workload.dev.name|prettyName}}</span>
         </span>
         {% if workload.deleted %}
@@ -39,7 +39,7 @@
     <div id="config" style="display: block; overflow-x: auto;">
         <table class="test-config left-align wrappable" style="table-layout: auto; width: 100%;">
 
-            <tr><td class="td-label">Author</td><td>{{workload.author|capfirst}}</td></tr>
+            <tr><td class="td-label">Author</td><td>{{workload.author|lower}}</td></tr>
             <tr><td class="td-label">Creation</td><td class="timestamp">{{workload.creation|date:'U'}}</td></tr>
 
             <!-- All of the Dev Engine ( or Sole Engine ) information -->
@@ -174,11 +174,11 @@
 
         <!-- Elo, (SPRT/LRR if SPRT, otherwise CONF), Games -->
         {% if type == "TEST" %}
-            <pre class="long-statblock" id="long-statblock">{{workload|longStatBlock|linebreaksbr}}</pre>
+            <pre class="long-statblock statblock-{{workload|testResultColour}}" id="long-statblock">{{workload|longStatBlock|linebreaksbr}}</pre>
         {% elif type == "TUNE" %}
-            <pre class="long-statblock" id="long-statblock">{{workload|shortStatBlock|linebreaksbr}}</pre>
+            <pre class="long-statblock statblock-{{workload|testResultColour}}" id="long-statblock">{{workload|shortStatBlock|linebreaksbr}}</pre>
         {% elif type == "DATAGEN" %}
-            <pre class="long-statblock" id="long-statblock">{{workload|longStatBlock|linebreaksbr}}</pre>
+            <pre class="long-statblock statblock-{{workload|testResultColour}}" id="long-statblock">{{workload|longStatBlock|linebreaksbr}}</pre>
         {% endif %}
 
         <!-- Forum to modify the Priority, Throughput, or (Tests only) Workload Size -->

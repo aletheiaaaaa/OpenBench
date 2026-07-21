@@ -151,6 +151,12 @@ textarea::placeholder {
     flex-shrink: 0;
     background: var(--bg-panel);
     border-right: 1px solid var(--border-1);
+    position: sticky;
+    top: 0;
+    align-self: flex-start;
+    height: 100vh;
+    overflow-y: auto;
+    box-sizing: border-box;
 }
 
 #sidebar-toggle {
@@ -394,6 +400,7 @@ textarea::placeholder {
 
 #content .test-list td {
     word-break: break-word;
+    vertical-align: middle;
 }
 
 /* group eyebrow row, e.g. "// Pending  — 3" */
@@ -555,38 +562,10 @@ textarea::placeholder {
 }
 
 td.statblock {
-    border-left: 3px solid var(--result-gray);
-    color: var(--result-gray);
-    background: color-mix(in srgb, var(--result-gray) 9%, transparent);
-    padding: 20px 22px;
-}
-
-#content .statblock-green {
-    border-left-color: var(--result-green);
-    color: var(--result-green);
-    background: color-mix(in srgb, var(--result-green) 9%, transparent);
-}
-
-#content .statblock-blue {
-    border-left-color: var(--result-blue);
-    color: var(--result-blue);
-    background: color-mix(in srgb, var(--result-blue) 9%, transparent);
-}
-
-#content .statblock-yellow {
-    border-left-color: var(--result-yellow);
-    color: var(--result-yellow);
-    background: color-mix(in srgb, var(--result-yellow) 9%, transparent);
-}
-
-#content .statblock-red {
-    border-left-color: var(--result-red);
-    color: var(--result-red);
-    background: color-mix(in srgb, var(--result-red) 9%, transparent);
-}
-
-#content .redlink {
-    color: var(--result-red);
+    border-left: 2px solid var(--result-gray);
+    color: color-mix(in srgb, var(--result-gray) 55%, var(--text-value));
+    background: color-mix(in srgb, var(--result-gray) 5%, transparent);
+    padding: 28px 26px;
 }
 
 #content .long-statblock {
@@ -594,7 +573,9 @@ td.statblock {
     color: var(--text-value);
     border-radius: 8px;
     border: 1px solid var(--border-1);
-    border-left: 3px solid var(--accent);
+    border-left-width: 2px;
+    border-left-style: solid;
+    border-left-color: var(--result-gray);
     padding: 14px 16px;
     font-family: "JetBrains Mono", monospace;
     font-weight: 400;
@@ -602,6 +583,34 @@ td.statblock {
     line-height: 1.7;
     font-variant-numeric: tabular-nums;
     overflow-x: auto;
+}
+
+#content .statblock-green {
+    border-left-color: var(--result-green);
+    color: color-mix(in srgb, var(--result-green) 55%, var(--text-value));
+    background: color-mix(in srgb, var(--result-green) 5%, transparent);
+}
+
+#content .statblock-blue {
+    border-left-color: var(--result-blue);
+    color: color-mix(in srgb, var(--result-blue) 55%, var(--text-value));
+    background: color-mix(in srgb, var(--result-blue) 5%, transparent);
+}
+
+#content .statblock-yellow {
+    border-left-color: var(--result-yellow);
+    color: color-mix(in srgb, var(--result-yellow) 55%, var(--text-value));
+    background: color-mix(in srgb, var(--result-yellow) 5%, transparent);
+}
+
+#content .statblock-red {
+    border-left-color: var(--result-red);
+    color: color-mix(in srgb, var(--result-red) 55%, var(--text-value));
+    background: color-mix(in srgb, var(--result-red) 5%, transparent);
+}
+
+#content .redlink {
+    color: var(--result-red);
 }
 
 #content #config {
