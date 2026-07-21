@@ -18,7 +18,7 @@
 #                                                                             #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-import re, django
+import re, json, django
 import OpenBench.config, OpenBench.utils, OpenBench.stats, OpenBench.models
 
 def oneDigitPrecision(value):
@@ -357,6 +357,61 @@ def git_diff_text(workload, N=24):
     base_name = base_name[:N] + '...' if len(base_name) > N else base_name
 
     return '%s vs %s' % (dev_name, base_name)
+
+
+def llr_chart_data(workload):
+
+    history = workload.llr_history
+
+    # Plot area, matching the hifi design reference (viewBox 0 0 800 220)
+    X0, TOP, PW, PH, CAP = 44, 16, 742, 180, 3.2
+
+    n = len(history)
+    clamp = lambda v: max(-CAP, min(CAP, v))
+
+    x_of = lambda i: X0 + (i / (n - 1)) * PW if n > 1 else X0
+    y_of = lambda v: TOP + ((CAP - clamp(v)) / (2 * CAP)) * PH
+
+    points = []
+    for i, sample in enumerate(history):
+        x, y = x_of(i), y_of(sample['llr'])
+        points.append({'x': round(x, 1), 'y': round(y, 1), 'llr': sample['llr'], 'games': sample['games']})
+
+    coords = ['%s %s' % (p['x'], p['y']) for p in points]
+    llr_path = 'M ' + ' L '.join(coords)
+
+    y_zero = y_of(0)
+    last = points[-1]
+    llr_area = 'M %s %s L %s L %s %s Z' % (points[0]['x'], y_zero, ' L '.join(coords), last['x'], y_zero)
+
+    y_upper = y_of(workload.upperllr)
+    y_lower = y_of(workload.lowerllr)
+
+    sign = '+' if last['llr'] >= 0 else ''
+
+    return {
+        'points_json' : json.dumps(points),
+        'llrPath'     : llr_path,
+        'llrArea'     : llr_area,
+        'yUpper'      : round(y_upper, 1),
+        'yLower'      : round(y_lower, 1),
+        'yZero'       : round(y_zero, 1),
+        'yUpperT'     : round(y_upper - 4, 1),
+        'yLowerT'     : round(y_lower + 13, 1),
+        'yZeroT'      : round(y_zero - 4, 1),
+        'lastX'       : last['x'],
+        'lastY'       : last['y'],
+        'curX'        : last['x'] - 8,
+        'curY'        : last['y'] - 10,
+        'curLLR'      : '%s%.2f' % (sign, last['llr']),
+        'upperllr'    : '%+.2f' % workload.upperllr,
+        'lowerllr'    : '%+.2f' % workload.lowerllr,
+        'gamesStart'  : points[0]['games'],
+        'gamesMid'    : points[n // 2]['games'],
+        'gamesEnd'    : last['games'],
+    }
+
+register.filter('llr_chart_data', llr_chart_data)
 
 
 def test_is_smp_odds(test):

@@ -19,7 +19,7 @@
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 from django.db.models import CharField, IntegerField, BooleanField, FloatField
-from django.db.models import JSONField, ForeignKey, DateTimeField, OneToOneField
+from django.db.models import JSONField, ForeignKey, DateTimeField, OneToOneField, DateField
 from django.db.models import CASCADE, PROTECT, Model, TextChoices
 from django.contrib.auth.models import User
 
@@ -147,6 +147,7 @@ class Test(Model):
     lowerllr      = FloatField(default=0.0) # SPRT
     currentllr    = FloatField(default=0.0) # SPRT
     upperllr      = FloatField(default=0.0) # SPRT
+    llr_history   = JSONField(default=list, blank=True) # SPRT, [{games, llr}, ...]
     max_games     = IntegerField(default=0) # GAMES or DATAGEN
     spsa          = JSONField(default=dict, blank=True, null=True) # SPSA
     genfens_args  = CharField(max_length=256, default='', blank=True) # DATAGEN
@@ -224,6 +225,16 @@ class Network(Model):
 
     def __str__(self):
         return '[{}] {} ({})'.format(self.engine, self.name, self.sha256)
+
+class DailyStats(Model):
+
+    # One row per UTC day, incremented as Results are submitted.
+    # Backs the "Games Today" / "Games / Sec" metrics on the index page.
+    date  = DateField(unique=True)
+    games = IntegerField(default=0)
+
+    def __str__(self):
+        return '%s (%d games)' % (self.date, self.games)
 
 class PGN(Model):
 

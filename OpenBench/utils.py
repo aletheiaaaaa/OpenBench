@@ -201,6 +201,23 @@ def getMachineStatus(username=None):
            "{0} Threads / ".format(sum([f.info['concurrency'] for f in machines])) + \
            "{0} MNPS ".format(round(sum([f.info['concurrency'] * f.mnps for f in machines]), 2))
 
+def getIndexMetrics():
+
+    cores_online = sum([f.info['concurrency'] for f in getRecentMachines()])
+
+    now   = timezone.now()
+    stats = DailyStats.objects.filter(date=now.date()).first()
+    games_today = stats.games if stats else 0
+
+    midnight        = now.replace(hour=0, minute=0, second=0, microsecond=0)
+    seconds_elapsed = max(1, (now - midnight).total_seconds())
+
+    return {
+        'cores_online'  : cores_online,
+        'games_today'   : games_today,
+        'games_per_sec' : round(games_today / seconds_elapsed, 1),
+    }
+
 def getPaging(content, page, url, pagelen=25):
 
     start = max(0, pagelen * (page - 1))
@@ -491,6 +508,12 @@ def update_test(request, machine):
             test.failed   = test.currentllr < test.lowerllr
             test.finished = test.passed or test.failed
 
+            # Track the running LLR series, for the LLR history chart
+            test.llr_history = test.llr_history + [{
+                'games' : test.games,
+                'llr'   : round(test.currentllr, 2),
+            }]
+
         elif test.test_mode == 'GAMES':
 
             # Finish test once we've played the proper amount of games
@@ -535,6 +558,11 @@ def update_test(request, machine):
         games=F('games') + games,
         updated=timezone.now()
     )
+
+    # Track today's game count, for the index page's "Games Today" / "Games / Sec" metrics
+    today = timezone.now().date()
+    DailyStats.objects.get_or_create(date=today)
+    DailyStats.objects.filter(date=today).update(games=F('games') + games)
 
     # Update Machine object; No risk from concurrent access
     Machine.objects.filter(id=machine_id).update(

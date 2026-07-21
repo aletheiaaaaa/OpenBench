@@ -6,6 +6,28 @@
 
     <meta http-equiv="refresh" content="30">
 
+    <!-- Only show the metrics strip on the front page of the Index -->
+    {% if paging.page == 1 %}
+        <div class="metrics-strip">
+            <div class="metric-cell">
+                <div class="metric-label">Cores Online</div>
+                <div class="metric-value">{{metrics.cores_online|insertCommas}}</div>
+            </div>
+            <div class="metric-cell">
+                <div class="metric-label">Active Tests</div>
+                <div class="metric-value">{{metrics.active_tests|insertCommas}}</div>
+            </div>
+            <div class="metric-cell">
+                <div class="metric-label">Games / Sec</div>
+                <div class="metric-value">{{metrics.games_per_sec}}</div>
+            </div>
+            <div class="metric-cell">
+                <div class="metric-label">Games Today</div>
+                <div class="metric-value">{{metrics.games_today|insertCommas}}</div>
+            </div>
+        </div>
+    {% endif %}
+
     <table class="test-list stripes hoverable">
 
         <!-- Only show Pending tests for the front page of the Index -->
@@ -13,7 +35,7 @@
 
             <!-- Currently Pending tests (Waiting to be approved) -->
             {% if pending %}
-                <tr class="table-header"><th colspan='6'>Pending</th></tr>
+                <tr class="table-header"><th colspan='6'><span class="group-eyebrow">// PENDING</span> <span class="group-count">&mdash; {{pending|length}}</span></th></tr>
                 {% for test in pending %}
                     <tr>
                         {% include "OpenBench/Blocks/testsummary.html" %}
@@ -24,7 +46,7 @@
 
             <!-- Currently Awaiting tests (Waiting for Artifacts) -->
             {% if awaiting %}
-                <tr class="table-header"><th colspan='6'>Awaiting Artifacts</th></tr>
+                <tr class="table-header"><th colspan='6'><span class="group-eyebrow">// AWAITING ARTIFACTS</span> <span class="group-count">&mdash; {{awaiting|length}}</span></th></tr>
                 {% for test in awaiting %}
                     <tr>
                         {% include "OpenBench/Blocks/testsummary.html" %}
@@ -35,7 +57,7 @@
 
             <!-- Currently Running tests (Waiting to be completed) -->
             {% if active %}
-                <tr class="table-header"><th colspan='6'>Active {{status}}</th></tr>
+                <tr class="table-header"><th colspan='6'><span class="group-eyebrow">// ACTIVE {{status}}</span> <span class="group-count">&mdash; {{active|length}}</span></th></tr>
                 {% for test in active %}
 
                     <!-- Add two empty rows ( for the colouring scheme ) when changing prio -->
@@ -56,7 +78,7 @@
         {% endif %}
 
         <!-- Tests which have already finished -->
-        <tr class="table-header"><th colspan='6'>Finished</th></tr>
+        <tr class="table-header"><th colspan='6'><span class="group-eyebrow">// FINISHED</span> <span class="group-count">&mdash; {{completed|length}}</span></th></tr>
         {% for test in completed %}
             <tr>
                 {% include "OpenBench/Blocks/testsummary.html" %}

@@ -16,7 +16,7 @@
         <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css' rel='stylesheet'>
 
         <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
         <title>OpenBench</title>
 
@@ -93,14 +93,19 @@
 
         <div id="sidebar">
 
+            <div id="sidebar-logo">
+                <div class="mark">OB</div>
+                <span>openbench</span>
+            </div>
+
             <ul>
                 <li class="header">Admin</li>
                 {% if user.is_authenticated %}
                     <li><a href="/logout/"><i class="fa-solid fa-right-from-bracket fa-fw"></i> Logout</a></li>
-                    <li><a href="/profile/"><i class="fa-solid fa-user fa-fw"></i> Profile</a></li>
+                    <li><a href="/profile/" class="{% if '/profile' in request.path %}active{% endif %}"><i class="fa-solid fa-user fa-fw"></i> Profile</a></li>
                 {% else %}
-                    <li><a href="/login"><i class="fa-solid fa-right-to-bracket fa-fw"></i> Login</a></li>
-                    <li><a href="/register"><i class="fa-solid fa-registered fa-fw"></i> Register</a></li>
+                    <li><a href="/login" class="{% if '/login' in request.path %}active{% endif %}"><i class="fa-solid fa-right-to-bracket fa-fw"></i> Login</a></li>
+                    <li><a href="/register" class="{% if '/register' in request.path %}active{% endif %}"><i class="fa-solid fa-registered fa-fw"></i> Register</a></li>
                 {% endif %}
             </ul>
 
@@ -108,30 +113,30 @@
 
             <ul>
                 <li class="header">Tests</li>
-                <li><a href="/index"><i class="fa-solid fa-house fa-fw"></i> Index</a></li>
-                <li><a href="/greens"><i class="fa-solid fa-heart fa-fw"></i> Greens</a></li>
-                <li><a href="/search"><i class="fa-solid fa-magnifying-glass fa-fw"></i> Search</a></li>
+                <li><a href="/index" class="{% if '/index' in request.path or request.path == '/' %}active{% endif %}"><i class="fa-solid fa-house fa-fw"></i> Index</a></li>
+                <li><a href="/greens" class="{% if '/greens' in request.path %}active{% endif %}"><i class="fa-solid fa-heart fa-fw"></i> Greens</a></li>
+                <li><a href="/search" class="{% if '/search' in request.path %}active{% endif %}"><i class="fa-solid fa-magnifying-glass fa-fw"></i> Search</a></li>
             </ul>
 
             <hr>
 
             <ul>
                 <li class="header">Actions</li>
-                <li><a href="/test/new/"><i class="fa-solid fa-plus fa-fw"></i> Create Test</a></li>
-                <li><a href="/tune/new/"><i class="fa-solid fa-vial fa-fw"></i> Create Tune</a></li>
-                <li><a href="/datagen/new/"><i class="fa-solid fa-database fa-fw"></i> Create Datagen</a></li>
-                <li><a href="/newNetwork"><i class="fa-solid fa-upload fa-fw"></i> Upload Net</a></li>
+                <li><a href="/test/new/" class="{% if '/test/new' in request.path %}active{% endif %}"><i class="fa-solid fa-plus fa-fw"></i> Create Test</a></li>
+                <li><a href="/tune/new/" class="{% if '/tune/new' in request.path %}active{% endif %}"><i class="fa-solid fa-vial fa-fw"></i> Create Tune</a></li>
+                <li><a href="/datagen/new/" class="{% if '/datagen/new' in request.path %}active{% endif %}"><i class="fa-solid fa-database fa-fw"></i> Create Datagen</a></li>
+                <li><a href="/newNetwork" class="{% if '/newNetwork' in request.path %}active{% endif %}"><i class="fa-solid fa-upload fa-fw"></i> Upload Net</a></li>
             </ul>
 
             <hr>
 
             <ul>
                 <li class="header">Info</li>
-                <li><a href="/users"><i class="fa-solid fa-users fa-fw"></i> Users</a></li>
-                <li><a href="/events"><i class="fa-solid fa-circle-exclamation fa-fw"></i> Events</a></li>
-                <li><a href="/errors"><i class="fa-solid fa-exclamation-triangle fa-fw"></i> Errors</a></li>
-                <li><a href="/machines"><i class="fa-solid fa-microchip fa-fw"></i> Machines</a></li>
-                <li><a href="/networks"><i class="fa-solid fa-circle-nodes fa-fw"></i> Networks</a></li>
+                <li><a href="/users" class="{% if '/users' in request.path %}active{% endif %}"><i class="fa-solid fa-users fa-fw"></i> Users</a></li>
+                <li><a href="/events" class="{% if '/events' in request.path %}active{% endif %}"><i class="fa-solid fa-circle-exclamation fa-fw"></i> Events</a></li>
+                <li><a href="/errors" class="{% if '/errors' in request.path %}active{% endif %}"><i class="fa-solid fa-exclamation-triangle fa-fw"></i> Errors</a></li>
+                <li><a href="/machines" class="{% if '/machines' in request.path %}active{% endif %}"><i class="fa-solid fa-microchip fa-fw"></i> Machines</a></li>
+                <li><a href="/networks" class="{% if '/networks' in request.path %}active{% endif %}"><i class="fa-solid fa-circle-nodes fa-fw"></i> Networks</a></li>
             </ul>
 
             <hr>
@@ -147,11 +152,9 @@
             <ul>
                 <li class="header">Engines</li>
                 {% for engine, data in config.engines.items %}
-                    <li><a href="{{data.source}}">{{engine}}</a></li>
+                    <li><a href="{{data.source}}"><i class="fa-solid fa-chess-knight fa-fw"></i> {{engine}}</a></li>
                 {% endfor %}
             </ul>
-
-            <hr>
 
         </div>
 
@@ -161,9 +164,37 @@
                     <button id="sidebar-toggle" onclick="toggle_sidebar()">
                         <i class="fa-solid fa-bars fa-fw"></i>
                     </button>
-                    <h2>
-                        <a class="site-title" href="/">OpenBench&nbsp;Testing&nbsp;Framework</a>
-                    </h2>
+                    <div class="header-top">
+                        <h1 style="margin: 0; font-size: 20px; font-weight: 600;">
+                            <a class="site-title" href="/"><span class="accent">OpenBench</span> Testing Framework</a>
+                        </h1>
+                        <div class="live-status">
+                            <span class="ob-live-dot"></span>
+                            <span>live &middot; auto-refresh 30s</span>
+                        </div>
+                    </div>
+                    <div class="breadcrumb">
+                        tests <span class="sep">/</span>
+                        <span class="current">
+                            {% if '/test/new' in request.path %}Create Test
+                            {% elif '/tune/new' in request.path %}Create Tune
+                            {% elif '/datagen/new' in request.path %}Create Datagen
+                            {% elif '/test/' in request.path or '/tune/' in request.path or '/datagen/' in request.path %}Workload
+                            {% elif '/newNetwork' in request.path %}Upload Net
+                            {% elif '/networks' in request.path %}Networks
+                            {% elif '/machines' in request.path %}Machines
+                            {% elif '/errors' in request.path %}Errors
+                            {% elif '/events' in request.path %}Events
+                            {% elif '/users' in request.path %}Users
+                            {% elif '/search' in request.path %}Search
+                            {% elif '/greens' in request.path %}Greens
+                            {% elif '/profile' in request.path %}Profile
+                            {% elif '/login' in request.path %}Login
+                            {% elif '/register' in request.path %}Register
+                            {% else %}Index
+                            {% endif %}
+                        </span>
+                    </div>
                 </div>
 
                 {% if request.session.error_message %}

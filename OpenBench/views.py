@@ -278,7 +278,10 @@ def index(request, page=1):
         'awaiting'  : awaiting,
         'paging'    : paging,
         'status'    : OpenBench.utils.getMachineStatus(),
+        'metrics'   : OpenBench.utils.getIndexMetrics(),
     }
+
+    data['metrics']['active_tests'] = len(active)
 
     return render(request, 'index.html', data)
 

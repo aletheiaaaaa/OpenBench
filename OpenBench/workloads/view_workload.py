@@ -43,6 +43,13 @@ def view_workload(request, workload, workload_type):
     for result in Result.objects.filter(test=workload):
         data['results'].append({ 'data' : result, 'active' : is_active(result) })
 
+    # Only SPRT tests with recorded samples get the LLR history chart
+    data['has_llr_history'] = (
+        workload_type == 'TEST'
+        and workload.test_mode == 'SPRT'
+        and len(workload.llr_history) > 0
+    )
+
     if workload_type == 'TEST':
         data['type']            = workload_type
         data['dev_text']        = 'Dev'

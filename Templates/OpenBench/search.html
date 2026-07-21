@@ -31,8 +31,9 @@
     {% if not tests %}
         <form method="POST" action="/search/">
             {% csrf_token %}
-            <div class="form">
-                <div class="col">
+            <div class="form-columns">
+                <div class="form">
+                    <h3>Search Filters</h3>
                     <div class="row">
                         <label for="keywords">Keywords</label>
                         <input id="keywords" name="keywords" placeholder="Seperated By Spaces"><br>
@@ -50,7 +51,6 @@
                             {% endfor %}
                         </select><br>
                     </div>
-                    <br>
                     <div class="row">
                         <label for="opening-book">Opening Book</label>
                         <select id="opening-book" name="opening-book">
@@ -109,40 +109,37 @@
                         </select>
                         <input id="threads-input" name="threads-input" value="1"><br>
                     </div>
-                    <br>
-                    <div class="row">
-                        <div class="col">
-                            <div class="row">
-                                <label for="show-greens">Greens</label>
-                                <input checked type="checkbox" id="show-greens" name="show-greens" value="">
-                            </div>
-                           <div class="row">
-                                <label for="show-blues">Blues</label>
-                                <input checked type="checkbox" id="show-blues" name="show-blues" value="">
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="row">
-                                <label for="show-yellows">Yellows</label>
-                                <input checked type="checkbox" id="show-yellows" name="show-yellows" value="">
-                            </div>
-                           <div class="row">
-                                <label for="show-stopped">Stopped</label>
-                                <input checked type="checkbox" id="show-stopped" name="show-stopped" value="">
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="row">
-                                <label for="show-reds">Reds</label>
-                                <input checked type="checkbox" id="show-reds" name="show-reds" value="">
-                            </div>
-                           <div class="row">
-                                <label for="show-deleted">Deleted</label>
-                                <input type="checkbox" id="show-deleted" name="show-deleted" value="">
-                            </div>
-                        </div>
+                    <input type="submit" class="anchorbutton btn-start w-100 mt-3" name="submit" value="Search Tests">
+                </div>
+
+                <div class="form">
+                    <h3>Result Colors</h3>
+                    <div class="color-toggle-grid">
+                        <label class="color-toggle" for="show-greens">
+                            <span class="swatch swatch-green"></span> Greens
+                            <input checked type="checkbox" id="show-greens" name="show-greens" value="">
+                        </label>
+                        <label class="color-toggle" for="show-blues">
+                            <span class="swatch swatch-blue"></span> Blues
+                            <input checked type="checkbox" id="show-blues" name="show-blues" value="">
+                        </label>
+                        <label class="color-toggle" for="show-yellows">
+                            <span class="swatch swatch-yellow"></span> Yellows
+                            <input checked type="checkbox" id="show-yellows" name="show-yellows" value="">
+                        </label>
+                        <label class="color-toggle" for="show-stopped">
+                            <span class="swatch swatch-gray"></span> Stopped
+                            <input checked type="checkbox" id="show-stopped" name="show-stopped" value="">
+                        </label>
+                        <label class="color-toggle" for="show-reds">
+                            <span class="swatch swatch-red"></span> Reds
+                            <input checked type="checkbox" id="show-reds" name="show-reds" value="">
+                        </label>
+                        <label class="color-toggle" for="show-deleted">
+                            <span class="swatch swatch-ghost"></span> Deleted
+                            <input type="checkbox" id="show-deleted" name="show-deleted" value="">
+                        </label>
                     </div>
-                    <input type="submit" class="anchorbutton btn-blue w-100" name="submit" value="Search Tests">
                 </div>
             </div>
         </form>

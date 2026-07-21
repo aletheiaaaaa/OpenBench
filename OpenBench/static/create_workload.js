@@ -57,6 +57,17 @@ function create_protocol_options(field_id, engine) {
     }
 }
 
+function preset_summary_text(preset) {
+
+    // Best-effort one-line summary of a preset's headline settings
+    const tc    = preset.dev_time_control || preset.both_time_control || '';
+    const opts  = preset.dev_options || preset.both_options || '';
+    const hash  = (opts.match(/Hash\s*=\s*\d+/) || [])[0];
+    const thr   = (opts.match(/Threads\s*=\s*\d+/) || [])[0];
+
+    return [tc, hash, thr].filter(Boolean).join(' · ');
+}
+
 function create_preset_buttons(engine, workload_type) {
 
     // Clear out all of the existing buttons
@@ -68,39 +79,32 @@ function create_preset_buttons(engine, workload_type) {
                   : workload_type == 'TUNE'    ? config.engines[engine].tune_presets
                   : workload_type == 'DATAGEN' ? config.engines[engine].datagen_presets : {};
 
-    var index = 0;
     for (let mode in presets) {
 
         // Don't include the global defaults
         if (mode == 'default')
             continue;
 
-        // Create a new button for the test mode
-        var btn       = document.createElement('button')
-        btn.innerHTML = mode;
-        btn.onclick   = function() { apply_preset(mode, workload_type); };
+        // Create a new chip for the test mode
+        var chip = document.createElement('button');
+        chip.type = 'button';
+        chip.classList.add('preset-chip');
+        chip.onclick = function() { apply_preset(mode, workload_type); };
 
-        // Apply all of our CSS bootstrapping
-        btn.classList.add('anchorbutton');
-        btn.classList.add('btn-preset');
-        btn.classList.add('mt-1');
-        btn.classList.add('w-100');
+        var name = document.createElement('span');
+        name.classList.add('preset-chip-name');
+        name.textContent = mode;
+        chip.appendChild(name);
 
-        // Put the button in a div, so we can handle padding
-        var div = document.createElement('div')
-        div.appendChild(btn)
-        div.classList.add('col-half');
+        const summary = preset_summary_text(presets[mode]);
+        if (summary) {
+            var sub = document.createElement('span');
+            sub.classList.add('preset-chip-summary');
+            sub.textContent = summary;
+            chip.appendChild(sub);
+        }
 
-        // Left pad everything but the first
-        if ((index % 4) != 0)
-            div.classList.add('pl-half');
-
-        // Right pad everything but the last
-        if ((index % 4) != 3)
-            div.classList.add('pr-half');
-
-        button_div.append(div);
-        index++;
+        button_div.append(chip);
     }
 }
 

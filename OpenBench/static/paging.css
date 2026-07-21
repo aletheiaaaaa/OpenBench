@@ -2,6 +2,7 @@
     display: inline-flex;
     justify-content: center;
     align-items: center;
+    gap: 2px;
 }
 
 #pagebrowse {
@@ -11,46 +12,49 @@
 
 .pages {
     display: flex;
+    gap: 2px;
 }
 
 .page, .ellipsis {
     display: inline-block;
-    padding: 6px 1rem;
+    min-width: 34px;
+    padding: 7px 10px;
     margin: 0;
-    border-left: 1px solid var(--color1);
-    border-right: 1px solid var(--color1);
-    background-color: var(--color2); /* Dark background color */
-    color: var(--color-font2);
+    border: 1px solid #1e1e22;
+    border-radius: 6px;
+    background-color: var(--bg-input);
+    color: #b6b6bd;
     text-decoration: none;
     cursor: pointer;
-    transition: background-color 0.2s; /* Add a smooth transition effect to background color */
-    height: 24px; /* This is just an example, adjust according to your needs */
-    line-height: 24px; /* Should be same as height */
-    min-width: 1.6rem;
+    transition: background-color 0.15s ease, color 0.15s ease;
+    line-height: normal;
     text-align: center;
     vertical-align: middle;
+    font-size: 12px;
 }
 
 .page:hover {
-    background-color: var(--color3); /* Darker background color on hover */
+    background-color: #16161a;
+    color: var(--accent-hi);
 }
 
-.previous {
-    border-top-left-radius: 7px;
-    border-bottom-left-radius: 7px;
+.previous, .next {
+    color: var(--text-dim);
 }
 
 .current {
-    background-color: var(--color3);
+    background-color: var(--accent);
+    color: var(--bg-base);
+    border-color: var(--accent);
 }
 
-.next {
-    border-top-right-radius: 7px;
-    border-bottom-right-radius: 7px;
+.current:hover {
+    background-color: var(--accent-hi);
+    color: var(--bg-base);
+    border-color: var(--accent-hi);
 }
 
 .ellipsis, .fa-solid {
-    /*margin: 0 4px;*/
-    pointer-events: none; /* Disable click events on ellipsis */
-    vertical-align: middle; /* Ensure icons are vertically centered */
+    pointer-events: none;
+    vertical-align: middle;
 }
