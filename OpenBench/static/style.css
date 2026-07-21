@@ -401,6 +401,8 @@ textarea::placeholder {
 #content .test-list td {
     word-break: break-word;
     vertical-align: middle;
+    padding: 22px 16px;
+    text-transform: lowercase;
 }
 
 /* group eyebrow row, e.g. "// Pending  — 3" */
@@ -565,6 +567,10 @@ td.statblock {
     border-left: 2px solid var(--result-gray);
     color: color-mix(in srgb, var(--result-gray) 55%, var(--text-value));
     background: color-mix(in srgb, var(--result-gray) 5%, transparent);
+    padding: 28px 26px;
+}
+
+#content .test-list td.statblock {
     padding: 28px 26px;
 }
 
