@@ -567,11 +567,11 @@ td.statblock {
     border-left: 2px solid var(--result-gray);
     color: color-mix(in srgb, var(--result-gray) 55%, var(--text-value));
     background: color-mix(in srgb, var(--result-gray) 5%, transparent);
-    padding: 28px 26px;
+    padding: 11px 16px;
 }
 
 #content .test-list td.statblock {
-    padding: 28px 26px;
+    padding: 11px 16px;
 }
 
 #index-table td.statblock,
