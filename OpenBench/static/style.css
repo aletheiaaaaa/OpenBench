@@ -851,7 +851,7 @@ td pre {
     border-radius: 10px;
     padding: 18px 22px;
     margin-top: 18px;
-    grid-column: 1 / -1;
+    grid-column: 1;
     box-sizing: border-box;
 }
 
